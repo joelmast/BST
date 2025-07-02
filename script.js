@@ -47,11 +47,33 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 };
 // Function for inserting values
-function insert(value) {
-    
+function insert(data) {
+    // Set current node to the root of the tree
+    let currentNode =  binarySearchTree.root;
+    // Add the new node if the current node is null
+    if (currentNode === null) {
+        return new Node(data);
+    }
+    // Check for duplicates (not allowed xd)
+    if (currentNode.data === data) {
+        return currentNode;
+    }
+    // Check if we need to go right or left
+    if(data > currentNode.data) {
+        // We need to go right xd
+        currentNode = currentNode.rightChild;
+        return insert(currentNode);
+    }
+    if (data < currentNode.data) {
+        // We need to go left xd
+        currentNode = currentNode.leftChild;
+        return insert(currentNode);
+    }
 }
 
 // Function for deleting values
-function deleteItem(value) {
+function deleteItem(data) {
 
 }
+
+let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
