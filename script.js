@@ -24,9 +24,13 @@ function buildTree(array, start, end) {
     } 
     // Find middle element of array
     let mid = Math.floor((start + end) / 2);
+    // Set root of BST
     let root = new Node(array[mid]);
+    // Recursively assign the left child
     root.leftChild = buildTree(array, start, mid - 1);
+    // Recursively assign the right child
     root.rightChild = buildTree(array, mid + 1, end)
+    // Return the finished BST
     return root;
 }
 
@@ -42,7 +46,12 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
         prettyPrint(node.leftChild, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
 };
+// Function for inserting values
+function insert(value) {
+    
+}
 
-let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-console.log(binarySearchTree.root);
-prettyPrint(binarySearchTree.root);
+// Function for deleting values
+function deleteItem(value) {
+
+}
