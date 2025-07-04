@@ -47,12 +47,20 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 };
 // Function for inserting values
+// NOTE TO ME: Add rooot pass-in for the function, so that I can recursively input both currentNode and data
 function insert(data) {
     // Set current node to the root of the tree
     let currentNode =  binarySearchTree.root;
     // Add the new node if the current node is null
     if (currentNode === null) {
         return new Node(data);
+    }
+    if (currentNode.leftChild === null) {
+        currentNode.leftChild = new Node(data);
+        return currentNode.leftChild;
+    } else if (currentNode.rightChild === null) {
+        currentNode.rightChild = new Node(data);
+        return currentNode.rightChild;
     }
     // Check for duplicates (not allowed xd)
     if (currentNode.data === data) {
@@ -62,13 +70,14 @@ function insert(data) {
     if(data > currentNode.data) {
         // We need to go right xd
         currentNode = currentNode.rightChild;
-        return insert(currentNode);
+        return insert(currentNode.data);
     }
     if (data < currentNode.data) {
         // We need to go left xd
         currentNode = currentNode.leftChild;
-        return insert(currentNode);
+        return insert(currentNode.data);
     }
+    return currentNode;
 }
 
 // Function for deleting values
@@ -77,3 +86,6 @@ function deleteItem(data) {
 }
 
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+prettyPrint(binarySearchTree.root)
+insert(6)
+prettyPrint(binarySearchTree.root);
