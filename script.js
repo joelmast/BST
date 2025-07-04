@@ -47,7 +47,6 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 };
 // Function for inserting values
-// NOTE TO ME: Add rooot pass-in for the function, so that I can recursively input both currentNode and data
 function insert(currNode, data) {
     // Set current node to the root of the tree
     let currentNode = currNode;
