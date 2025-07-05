@@ -67,11 +67,43 @@ function insert(currNode, data) {
 }
 
 // Function for deleting values
-function deleteItem(data) {
+function deleteItem(currNode, data) {
+    // Base Case for recursive fufnction
+    if (currNode === null) {
+        return currNode;
+    }
+
+    if (currNode.data > data) {
+        currNode.leftChild = deleteItem(currNode.leftChild, data);
+    } else if (currNode.data < data) {
+        currNode.rightChild = deleteItem(currNode.rightChild, data);
+    } else {
+        // When the currNode's data matches the inputed data
+        if (currNode.leftChild === null) {
+            return currNode.rightChild;
+        }
+        if (currNode.rightChild === null) {
+            return currNode.leftChild;
+        }
+
+        let findSucessor = (currNode) => {
+            current = currNode.rightChild;
+            while (current !== null && current.leftChild !== null) {
+                current = current.leftChild;
+            }
+            return current;
+        }
+        let successor = findSucessor(currNode);
+        currNode.data = successor.data;
+        currNode.rightChild = deleteItem(currNode.rightChild, successor.data)
+    }
+    return currNode;
 
 }
 
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(binarySearchTree.root)
 insert(binarySearchTree.root, 6)
+prettyPrint(binarySearchTree.root);
+deleteItem(binarySearchTree.root, 67);
 prettyPrint(binarySearchTree.root);
