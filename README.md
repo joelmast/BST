@@ -17,6 +17,18 @@ This implementation includes the following features:
 *   **`insert(data)`:** Inserts a new value into the tree.
 *   **`deleteItem(data)`:** Deletes a value from the tree.
 *   **`prettyPrint()`:** Prints a visually structured representation of the tree to the console.
+*   **`find(data)`:** Searches for and returns the node containing the given value.
+*   **`levelOrder(callback)`:** Traverses the tree in breadth-first level order and calls the given callback on each node.
+*   **`inOrder(callback)`:** Traverses the tree in in-order (left, root, right) depth-first order.
+*   **`preOrder(callback)`:** Traverses the tree in pre-order (root, left, right) depth-first order.
+*   **`postOrder(callback)`:** Traverses the tree in post-order (left, right, root) depth-first order.
+*   **`height(value)`:** Returns the height of the node containing the given value.
+*   **`depth(value)`:** Returns the depth of the node containing the given value.
+*   **`isBalanced()`:** Checks if the tree is height-balanced.
+*   **`rebalance()`:** Rebuilds the tree into a balanced tree using in-order traversal.
+*   **`prettyPrint()`:** Prints a visually structured representation of the tree to the console.
+
+
 
 ## How to Use
 
