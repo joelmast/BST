@@ -102,6 +102,9 @@ function deleteItem(currNode, data) {
 }
 
 function find(currNode, value) {
+    if (currNode === null) {
+        return null;
+    }
     if (currNode.data === value) {
         return currNode;
     }
@@ -113,10 +116,11 @@ function find(currNode, value) {
         currNode = currNode.leftChild;
         return find(currNode, value);
     } 
-    if (currNode === null) {
-        return null;
-    }
 }
+
+// function levelOrder(callback) {
+
+// }
 
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(binarySearchTree.root)
@@ -124,4 +128,4 @@ insert(binarySearchTree.root, 6)
 prettyPrint(binarySearchTree.root);
 deleteItem(binarySearchTree.root, 67);
 prettyPrint(binarySearchTree.root);
-console.log(find(binarySearchTree.root, 5))
+console.log(find(binarySearchTree.root, 19))
