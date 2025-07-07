@@ -101,9 +101,27 @@ function deleteItem(currNode, data) {
 
 }
 
+function find(currNode, value) {
+    if (currNode.data === value) {
+        return currNode;
+    }
+    if (value > currNode.data) {
+        currNode = currNode.rightChild;
+        return find(currNode, value);
+    }
+    if (value < currNode.data) {
+        currNode = currNode.leftChild;
+        return find(currNode, value);
+    } 
+    if (currNode === null) {
+        return null;
+    }
+}
+
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(binarySearchTree.root)
 insert(binarySearchTree.root, 6)
 prettyPrint(binarySearchTree.root);
 deleteItem(binarySearchTree.root, 67);
 prettyPrint(binarySearchTree.root);
+console.log(find(binarySearchTree.root, 5))
