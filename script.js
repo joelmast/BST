@@ -118,9 +118,28 @@ function find(currNode, value) {
     } 
 }
 
-// function levelOrder(callback) {
+function levelOrder(callback, root) {
+    // Throw error if the user inputs something other than a function as a callback
+    if (typeof callback !== 'function') {
+        throw new Error("You must input a callback function!")
+    }
+    // initialize the que
+    let queue = []
+    // push the root node
+    queue.push(root);
 
-// }
+    while (queue.length > 0) {
+        // assign current to the first element of the queue
+        let current = queue.shift();
+        callback(current);
+        if (current.leftChild !== null) {
+            queue.push(current.leftChild)
+        }
+        if (current.rightChild !== null) {
+            queue.push(current.rightChild);
+        }
+    }
+}
 
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(binarySearchTree.root)
@@ -129,3 +148,4 @@ prettyPrint(binarySearchTree.root);
 deleteItem(binarySearchTree.root, 67);
 prettyPrint(binarySearchTree.root);
 console.log(find(binarySearchTree.root, 19))
+levelOrder(blahblah, binarySearchTree.root);
