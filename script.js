@@ -183,6 +183,26 @@ function postOrder(callback, root) {
     callback(root);
 }
 
+function height(value, root) {
+    // Use external function to find the inputed value
+    let node = find(root, value)
+    if (node === null) {
+        return null;
+    }
+    return getHeight(node);
+}
+
+function getHeight(node) {
+    if (node === null) {
+        return -1;
+    }
+
+    let leftHeight = getHeight(node.leftChild);
+    let rightHeight = getHeight(node.rightChild);
+
+    return 1 + Math.max(leftHeight, rightHeight);
+}
+
 function depth(value, root) {
     let depth = 0;
     let node = root;
