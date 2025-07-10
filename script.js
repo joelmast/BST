@@ -121,7 +121,7 @@ function find(currNode, value) {
 function levelOrder(callback, root) {
     // Throw error if the user inputs something other than a function as a callback
     if (typeof callback !== 'function') {
-        throw new Error("You must input a callback function!")
+        throw new Error("You must input a callback function!");
     }
     // initialize the que
     let queue = []
@@ -141,6 +141,48 @@ function levelOrder(callback, root) {
     }
 }
 
+function preOrder(callback, root) {
+// The order of preOrder is: <root> <left subtree> <right subtree>
+    // Throw error if the user inputs something other than a function as a callback
+    if (typeof callback !== 'function') {
+        throw new Error("You must input a callback function!");
+    }
+    if (root === null) {
+        return
+    }
+    callback(root);
+    preOrder(callback, root.leftChild);
+    preOrder(callback, root.rightChild);
+}
+
+function inOrder(callback, root) {
+    // The order of inOrder is: <left subtree> <root> <right subtree>
+    // Throw error if the user inputs something other than a function as a callback
+    if (typeof callback !== 'function') {
+        throw new Error("You must input a callback function!");
+    }
+    if (root === null) {
+        return
+    }
+    inOrder(callback, root.leftChild);
+    callback(root);
+    inOrder(callback, root.rightChild);
+}
+
+function postOrder(callback, root) {
+// The order of postOrder is: <left subtree> <right subtree> <root>
+    // Throw error if the user inputs something other than a function as a callback
+    if (typeof callback !== 'function') {
+        throw new Error("You must input a callback function!");
+    }
+    if (root === null) {
+        return
+    }
+    postOrder(callback, root.leftChild);
+    postOrder(callback, root.rightChild);
+    callback(root);
+}
+let blahblah = 1;
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(binarySearchTree.root)
 insert(binarySearchTree.root, 6)
