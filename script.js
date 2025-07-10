@@ -182,6 +182,26 @@ function postOrder(callback, root) {
     postOrder(callback, root.rightChild);
     callback(root);
 }
+
+function depth(value, root) {
+    let depth = 0;
+    let node = root;
+    while (node.data !== value) {
+        if (value < node.data) {
+            node = node.leftChild;
+            depth++;
+        } else if (value > node.data) {
+            node = node.rightChild;
+            depth++;
+        }
+        if (node === null) {
+            return null;
+        }
+    }
+    return depth;
+}
+
+
 let blahblah = 1;
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 prettyPrint(binarySearchTree.root)
