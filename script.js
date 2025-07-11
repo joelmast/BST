@@ -221,6 +221,17 @@ function depth(value, root) {
     return depth;
 }
 
+function isBalanced(root) {
+    if (node === null) {
+        return;
+    }
+    
+}
+
+function rebalance(root) {
+
+}
+
 
 let blahblah = 1;
 let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
