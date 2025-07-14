@@ -244,13 +244,25 @@ function rebalance(root) {
     return bst;
 }
 
+function printer(node) {
+    console.log(node.data);
+}
 
-let blahblah = 1;
-let binarySearchTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-prettyPrint(binarySearchTree.root)
-insert(binarySearchTree.root, 6)
-prettyPrint(binarySearchTree.root);
-deleteItem(binarySearchTree.root, 67);
-prettyPrint(binarySearchTree.root);
-console.log(find(binarySearchTree.root, 19))
-levelOrder(blahblah, binarySearchTree.root);
+let myArray = [17, 20, 71, 32, 55, 77, 68, 60, 43, 51, 4, 80, 42, 41, 57, 67, 75, 27, 53, 18, 50, 61, 21, 47, 52, 88, 87, 26, 36, 40, 29, 35, 76, 38, 86, 16, 2, 6, 9, 33, 11, 84, 66, 25, 83, 31, 3, 90, 13, 73]
+let binarySearchTree = new Tree(myArray);
+console.log(isBalanced(binarySearchTree.root));  // true
+// print out items in level order, pre, post, and in order
+// levelOrder(printer, binarySearchTree.root);
+// preOrder(printer, binarySearchTree.root);
+// postOrder(printer, binarySearchTree.root);
+// inOrder(printer, binarySearchTree.root);
+
+// unbalance tree
+insert(binarySearchTree.root, 121);
+insert(binarySearchTree.root, 132);
+insert(binarySearchTree.root, 128);
+insert(binarySearchTree.root, 156);
+// check to see if indeed is not balanced
+console.log(isBalanced(binarySearchTree.root)); // false
+let newBinarySearchTree = rebalance(binarySearchTree.root);
+console.log(isBalanced(newBinarySearchTree.root)); // true
