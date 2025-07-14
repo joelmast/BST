@@ -222,14 +222,26 @@ function depth(value, root) {
 }
 
 function isBalanced(root) {
-    if (node === null) {
-        return;
+    if (root === null) {
+        return true;
     }
-    
+    let heightLeft = getHeight(root.leftChild);
+    let heightRight = getHeight(root.rightChild);
+    let diff = Math.abs(heightLeft - heightRight);
+    if (diff > 1) {
+        return false;
+    } else {
+        return isBalanced(root.leftChild) && isBalanced(root.rightChild);
+    }
 }
 
 function rebalance(root) {
-
+    // get arr of tree
+    let arr = [];
+    inOrder(node => arr.push(node.data), root);
+    // Now provide this array to buildTree function
+    let bst = new Tree(arr);
+    return bst;
 }
 
 
