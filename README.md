@@ -27,7 +27,7 @@ This implementation includes the following features:
 *   **`isBalanced()`:** Checks if the tree is height-balanced.
 *   **`rebalance()`:** Rebuilds the tree into a balanced tree using in-order traversal.
 *   **`prettyPrint()`:** Prints a visually structured representation of the tree to the console.
-
+*   **`getHeight()`:** Helper function for height(value) function.
 
 
 ## How to Use
